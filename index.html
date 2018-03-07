@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Time</title>
+    </head>
+    <style>
+        .time {
+            width: 1000px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+            
+            width: 1024px;
+            height: 512px;
+            font-size: 350px;
+        }
+    </style>
+    <body>
+        <section>
+            <div class="time">
+                <span id="hour"></span>:<span id="min"></span>
+            </div>
+        </section>
+        <script>
+            var getTime = function() {
+                var now = new Date();
+                var nowTime = now.getTime();
+                var hours = Math.floor(nowTime / 1000 / 60 / 60) % 24;
+                var min = Math.floor(nowTime / 1000 / 60) % 60;
+                document.getElementById('hour').textContent = hours;
+                document.getElementById('min').textContent = min;
+                reGetTime();
+            }
+
+            var reGetTime = function() {
+                setTimeout(getTime, 1000);
+            }
+            getTime();
+        </script>
+    </body>
+</html>
